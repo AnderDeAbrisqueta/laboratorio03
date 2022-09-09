@@ -154,12 +154,23 @@ const index = 2;
 const newValue = "furor";
 
 const replaceAt = (arr, index, newElement) => {
-
+    const newElements = [...arr];
+    newElements[index] = newElement;
+    return newElements;
 };
 
 const result = replaceAt(elements, index, newValue);
 console.log(result === elements); // false
 console.log(result); // ['lorem', 'ipsum', 'furor', 'sit', 'amet'];
+console.log(elements);
+```
+
+- Resultado
+
+```
+false
+[ 'lorem', 'ipsum', 'furor', 'sit', 'amet' ]
+[ 'lorem', 'ipsum', 'dolor', 'sit', 'amet' ]
 ```
 
 ### Ejercicio 3
