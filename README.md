@@ -122,3 +122,18 @@ console.log(result);
   }
 ]
 ```
+
+Extra: Añade un segundo argumento a la función para indicar el número de atributos a añadir. Si dicho argumento no es informado cada objeto tendrá todos los atributos.
+
+```
+const fromCSV = (csv, nAttrs) => {};
+
+console.log(fromCSV(data)); // Cada usuario tendrá todos los atributos como la implementación original
+console.log(fromCSV(data, 2)); // cada usuario tendrá sólo `id` y `name`
+console.log(fromCSV(data, 3)); // cada usuario tendrá sólo `id`, `name` y `surname`
+console.log(fromCSV(data, 4)); // cada usuario tendrá sólo `id`, `name`, `surname` y `gender`
+```
+
+### Ejercicio 2
+
+Implementar una funcion ```replaceAt``` que tome como primer argumento un array, como segundo argumento un índice y como tercer argumento un valor y reemplace el elemento dentro del array en el índice indicado. El array de entrada no debe de ser mutado, eso es, que debes crear un nuevo array sin modificar el existente. Utiliza spread operator, y ```slice``` para conseguirlo.
