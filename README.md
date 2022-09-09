@@ -126,7 +126,17 @@ console.log(result);
 Extra: Añade un segundo argumento a la función para indicar el número de atributos a añadir. Si dicho argumento no es informado cada objeto tendrá todos los atributos.
 
 ```
-const fromCSV = (csv, nAttrs) => {};
+const fromCSV = (csv, nAttrs) => {
+    const linesArray = csv.split('\n');
+    const keysArray = linesArray[0].split(',');
+    return linesArray.slice(1).map(lineArray => {
+        return lineArray.split(',').slice(0, nAttrs).reduce((lines, line, i) => {
+            const objPerson = {};
+            objPerson[keysArray[i]] = line;
+            return { ...lines, ...objPerson };
+        }, {});
+    });
+};
 
 console.log(fromCSV(data)); // Cada usuario tendrá todos los atributos como la implementación original
 console.log(fromCSV(data, 2)); // cada usuario tendrá sólo `id` y `name`
