@@ -455,10 +455,10 @@ users.forEach(logUser);
 - Resultado
 
 ```
- - Luke Patterson, 32
- - Jane Doe, 41        
- - Alexandra Morton, 35
- - Bruce Willis, 39 
+- Luke Patterson, 32
+- Jane Doe, 41        
+- Alexandra Morton, 35
+- Bruce Willis, 39 
 ```
 
 ### Ejercicio 3
@@ -466,15 +466,65 @@ users.forEach(logUser);
 Con el resultado del ejercicio 2, sustituye la función ```logUser``` por la siguiente y modifica el código aplicando las guardas que creas conveniente para corregir los errores de compilación:
 
 ```
-const logUser = (user: User) => {
-  let extraInfo: string;
-  if (user.occupation) {
-    extraInfo = user.occupation;
-  } else {
-    extraInfo = user.subject;
-  }
-  console.log(`  - ${user.name}, ${user.age}, ${extraInfo}`);
+import { description } from "./module";
+
+interface Student {
+    name: string;
+    age: number;
+    occupation: string;
 };
+
+interface Teacher {
+    name: string;
+    age: number;
+    subject: string;
+  };
+
+  type User = Student | Teacher;
+  
+  const users: User[] = [
+    {
+      name: "Luke Patterson",
+      age: 32,
+      occupation: "Internal auditor",
+    },
+    {
+      name: "Jane Doe",
+      age: 41,
+      subject: "English",
+    },
+    {
+      name: "Alexandra Morton",
+      age: 35,
+      occupation: "Conservation worker",
+    },
+    {
+      name: "Bruce Willis",
+      age: 39,
+      subject: "Biology",
+    },
+  ];
+  
+  const logUser = (user: User) => {
+    let extraInfo: string;
+    if ("occupation" in user) {
+      extraInfo = user.occupation;
+    } else {
+      extraInfo = user.subject;
+    }
+    console.log(`  - ${user.name}, ${user.age}, ${extraInfo}`);
+  };
+  
+  users.forEach(logUser);
+
+```
+- Resultado
+
+```
+- Luke Patterson, 32, Internal auditor
+- Jane Doe, 41, English
+- Alexandra Morton, 35, Conservation worker
+- Bruce Willis, 39, Biology
 ```
 
 Extra: Crea dos funciones ```isStudent``` e ```isTeacher``` que apliquen la guarda y úsalas en la función ```logPerson```. Aplica tipado completo en la función (argumentos y valor de retorno). Utiliza is.
