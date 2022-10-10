@@ -557,14 +557,14 @@ const students: Student[] = [
   },
 ];
 
-const filterStudentsBy = (students: Student[], criteria: unknown): Student[] => {
-  return students.filter((user) => {
-    const criteriaKeys = Object.keys(criteria);
-    return criteriaKeys.every((fieldName) => {
-      return criteria[fieldName] === student[fieldName];
+const filterStudentsBy = (students: Student[], criteria: number | any): Student[] => {
+    return students.filter((students) => {
+      const criteriaKeys = Object.keys(criteria);
+      return criteriaKeys.every((fieldName) => {
+        return criteria[fieldName] === students[fieldName];
+      });
     });
-  });
-};
+  };
 
 const logStudent = ({ name, occupation }: Student) => {
   console.log(`  - ${name}, ${occupation}`);
@@ -572,6 +572,12 @@ const logStudent = ({ name, occupation }: Student) => {
 
 console.log("Students of age 35:");
 filterStudentsBy(students, { age: 35 }).forEach(logStudent);
+```
+- Resultado
+
+```
+Students of age 35:
+  - Alexandra Morton, Conservation worker
 ```
 
 ### Ejercicio 5
