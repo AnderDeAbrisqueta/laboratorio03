@@ -408,13 +408,21 @@ Students:
 Utilizando la interfaz ```Student``` del ejercicio anterior, crea la definición de ```User``` de tal manera que pueda ser o ```Student``` o ```Teacher```. Aplica la definición de ```User``` donde sea requerido solventar los errores de tipos.
 
 ```
+interface Student {
+    name: string;
+    age: number;
+    occupation: string;
+};
+
 interface Teacher {
   name: string;
   age: number;
   subject: string;
-}
+};
 
-const users: Teacher[] = [
+type User = Student | Teacher;
+
+const users: User[] = [
   {
     name: "Luke Patterson",
     age: 32,
@@ -437,11 +445,20 @@ const users: Teacher[] = [
   },
 ];
 
-const logUser = ({ name, age }: Teacher) => {
+const logUser = ({ name, age }: User) => {
   console.log(`  - ${name}, ${age}`);
 };
 
 users.forEach(logUser);
+```
+
+- Resultado
+
+```
+ - Luke Patterson, 32
+ - Jane Doe, 41        
+ - Alexandra Morton, 35
+ - Bruce Willis, 39 
 ```
 
 ### Ejercicio 3
