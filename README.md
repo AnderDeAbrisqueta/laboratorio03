@@ -212,8 +212,31 @@ const data = [
 ];
 
 const winnerByYear = (arr, year) => {
+  arrAux = []
+  index = 0
 
-};
+  arr.forEach(value => {
+    if (value.year == year) {
+      arrAux[index] = value
+      index++
+    }
+  })
+
+  const rankingObj = arrAux.sort((a, b) => b.ranking - a.ranking)
+  let rankingArray = []
+
+  for (let i = 0; i < 3; i++) {
+    rankingArray[i] = rankingObj[i]
+  }
+
+  let reformattedArray = rankingArray.map(obj => {
+    if (obj != undefined) {
+      return obj.name
+    }
+  })
+
+  return reformattedArray
+}
 
 console.log(winnerByYear(data, 1998)) // [ 'Douglass', 'Randy', 'Monroe' ]
 console.log(winnerByYear(data, 1999)) // [ 'Graciela', 'Ervin', 'Maxie' ]
