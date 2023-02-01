@@ -336,7 +336,11 @@ const collection = [
 ];
 
 const normalize = (arr) => {
-
+    for (let index = 0; index < arr.length; index++) {
+        const { id, ...rest } = arr[index]
+        arr[id] = { ...rest }
+    }
+    return arr
 };
 
 const result = normalize(collection);
