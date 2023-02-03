@@ -377,7 +377,17 @@ Implementa una función para eliminar valores falsys de una estructura de datos.
 const elements = [0, 1, false, 2, "", 3];
 
 const compact = (arg) => {
+    if (typeof arg === 'object') {
+        if (Array.isArray(arg)) {
+        return arg.filter(x => !!x)
+        }
 
+        if (arg && arg.constructor.name === 'Object') {
+            const newArg = Object?.entries(arg)?.filter(value => value[1])
+            return Object.fromEntries(newArg)
+        }
+    }
+    return arg ?? 'null'
 };
 
 console.log(compact(123)); // 123
